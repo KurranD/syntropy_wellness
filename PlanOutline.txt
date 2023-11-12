@@ -1,0 +1,11 @@
+- Language module for loading in various languages for all texts
+- UI which handles all display (seperated from underlying logic, takes in objects and displays them)
+     -> Attractive menu which clearly delineates pages
+- Underlying Logic:
+  - Information:
+      -> Levels of government
+      -> Upper house, lower house, BoC, Supreme Court, etc
+  - Interactive riding/districts map
+      -> Map corresponding to different levels: needs to take an object (municipal, provincial, federal) and show regions according to this
+      -> Incumbents and contenders
+      -> Election, bi-election, no election
