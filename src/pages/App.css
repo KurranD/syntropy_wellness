@@ -38,7 +38,7 @@
 .navbar {
   padding: 10px;
   position: fixed;
-  top: 0;
+  top: 3%;
   left: 0;
   width: 100%;
 }
@@ -54,9 +54,11 @@
 .nav-item {
   text-decoration: none;
   color: white;
+  list-style: none;
   font-weight: bold;
 }
 
 .nav-item:hover {
   color: yellow;
+  cursor: pointer;
 }

@@ -1,14 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import languageParser from '../languages/LanguageParser';
 import { LanguageContext } from '../languages/LanguageContext';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import {Information} from './information';
-import {MainPage} from './mainPage';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const DropDownContainer = styled("div")``;
+const DropDownHeader = styled("div")``;
+const DropDownListContainer = styled("div")``;
+const DropDownList = styled("ul")`
+  padding:0;
+  margin:0;
+`;
+const ListItem = styled("li")``;
 
 class NavBar extends Component {
   state = {
     loading: true,
+    languageMenuOpen: false
   };
+
+  toggle = (value) => {
+    this.setState({languageMenuOpen: value})
+  }
 
   componentDidMount = async () => {
     await languageParser.fetchTranslations();
@@ -28,7 +41,16 @@ class NavBar extends Component {
                     <Link className="nav-item" to="/">{languageParser.getTranslationByKey('home_tab', language)}</Link>
                     <Link className="nav-item" to="/information">{languageParser.getTranslationByKey('information_tab', language)}</Link>
                     <Link className="nav-item" to="/map">{languageParser.getTranslationByKey('map_tab', language)}</Link>
-                    <li onClick={() => changeLanguage(language === 'en' ? 'fr' : 'en')} className='nav-item'>{languageParser.getTranslationByKey('language_selection', language)}</li>
+                    <DropDownContainer onMouseEnter={() => this.toggle(true)} onMouseLeave={() => this.toggle(false)}>
+                      <DropDownHeader className='nav-item'>{languageParser.getTranslationByKey('language_selection', language)}</DropDownHeader>
+                      {this.state.languageMenuOpen && 
+                      <DropDownListContainer>
+                        <DropDownList>
+                          <ListItem className='nav-item' onClick={() => changeLanguage('en')}>English</ListItem>
+                          <ListItem className='nav-item' onClick={() => changeLanguage('fr')}>Français</ListItem>
+                        </DropDownList>
+                      </DropDownListContainer>}
+                    </DropDownContainer>
                 </ul>
             </nav>
             )}
