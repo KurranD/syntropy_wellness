@@ -5,12 +5,13 @@ import { Component } from 'react';
 import { FederalGovernment } from './information_pages/federalGovernment';
 import { ProvincialGovernment } from './information_pages/provincialGovernment';
 import { MunicipalGovernment } from './information_pages/municipalGovernment';
+import { GeneralInformation } from './information_pages/generalInformation';
 import { Institions } from './information_pages/institutions';
 
 export class Information extends Component{
     state = {
         loading: true,
-        currentTab: 'federal'
+        currentTab: 'generalInfo'
     }
 
     componentDidMount = async () => {
@@ -29,15 +30,17 @@ export class Information extends Component{
                                 <h2>{languageParser.getTranslationByKey('information_tab', language)}</h2>
                             </div>
                             <div className='filter_buttons'>
+                                <button onClick={() => this.setState({currentTab: 'generalInfo'})} className='button-item'>{languageParser.getTranslationByKey('general_info', language)}</button>
                                 <button onClick={() => this.setState({currentTab: 'federal'})} className='button-item'>{languageParser.getTranslationByKey('federal', language)}</button>
                                 <button onClick={() => this.setState({currentTab: 'provincial'})} className='button-item'>{languageParser.getTranslationByKey('provincial', language)}</button>
                                 <button onClick={() => this.setState({currentTab: 'municipal'})} className='button-item'>{languageParser.getTranslationByKey('municipal', language)}</button>
                                 <button onClick={() => this.setState({currentTab: 'institutions'})} className='button-item'>{languageParser.getTranslationByKey('institutions', language)}</button>
                                 <div className='information-pages'>
-                                    {this.state.currentTab === 'federal' && <FederalGovernment/>}
-                                    {this.state.currentTab === 'provincial' && <ProvincialGovernment/>}
-                                    {this.state.currentTab === 'municipal' && <MunicipalGovernment/>}
-                                    {this.state.currentTab === 'institutions' && <Institions/>}
+                                    {this.state.currentTab === 'generalInfo' && <GeneralInformation language={language}/>}
+                                    {this.state.currentTab === 'federal' && <FederalGovernment language={language}/>}
+                                    {this.state.currentTab === 'provincial' && <ProvincialGovernment language={language}/>}
+                                    {this.state.currentTab === 'municipal' && <MunicipalGovernment language={language}/>}
+                                    {this.state.currentTab === 'institutions' && <Institions language={language}/>}
                                 </div>
                             </div>
                         </div>

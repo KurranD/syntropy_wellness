@@ -1,7 +1,8 @@
+
 import { Component } from 'react';
 import languageParser from '../../languages/LanguageParser';
 
-export class MunicipalGovernment extends Component{
+export class GeneralInformation extends Component{
     state = {
         loading: true
     }
@@ -15,7 +16,7 @@ export class MunicipalGovernment extends Component{
                 <div>
                     {languageParser.getTranslationByKey('canadian_politics_demystified', this.props.language)}
                 </div>
-            </div>  
+            </div>    
         );
     };
 }
