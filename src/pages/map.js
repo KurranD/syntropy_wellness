@@ -9,10 +9,17 @@ export class Map extends Component{
         loading: true,
         map: null,
         federalRidingsData: null,
-        federalRidingsLayer: null,
         municipalData: null,
-        provincialData: null,
-        provincialLayer: null
+        ontarioData: null,
+        bcData: null,
+        albertaData: null,
+        manitobaData: null,
+        winnipegProvincialData: null,
+        saskatchewanData: null,
+        quebecData: null,
+        newfoundlandData: null,
+        newbrunswickData: null,
+        novascotiaData: null
     }
 
     componentDidMount = async () => {
@@ -27,17 +34,58 @@ export class Map extends Component{
         if(!this.state.federalRidingsData) {
             const federalRidingsRequest = await fetch('./georef-canada-federal-electoral-district@public.geojson');
             this.state.federalRidingsData = await federalRidingsRequest.json();
-            this.state.federalRidingsLayer = L.geoJSON(this.state.federalRidingsData).addTo(this.state.map);
+            L.geoJSON(this.state.federalRidingsData).addTo(this.state.map);
         }
 
-        if(!this.state.provincialData) {
-            const responseOntario = await fetch('./ontario_districts.geojson'); // Load your shapefile data
-            this.state.provincialData = await responseOntario.json();
+        if(!this.state.ontarioData) {
+            const responseOntario = await fetch('./ontario_districts.geojson');
+            this.state.ontarioData = await responseOntario.json();
         }
-        /*this.setState({
-            federalRidingsLayer: L.geoJSON(this.state.federalRidingsData).addTo(this.state.map),
-        });*/
-        
+
+        if(!this.state.bcData) {
+            const responseBC = await fetch('./bc_districts.geojson');
+            this.state.bcData = await responseBC.json();
+        }
+
+        if(!this.state.albertaData) {
+            const responseAlberta = await fetch('./alberta_districts.geojson');
+            this.state.albertaData = await responseAlberta.json();
+        }
+
+        if(!this.state.manitobaData) {
+            const responseManitoba = await fetch('./manitoba_districts.geojson');
+            this.state.manitobaData = await responseManitoba.json();
+        }
+
+        if(!this.state.winnipegProvincialData) {
+            const responseManitoba = await fetch('./winnipeg_manitoba_districts.geojson');
+            this.state.winnipegProvincialData = await responseManitoba.json();
+        }
+
+        if(!this.state.saskatchewanData) {
+            const responseSaskatchewan = await fetch('./saskatchewan_districts.geojson');
+            this.state.saskatchewanData = await responseSaskatchewan.json();
+        }
+
+        if(!this.state.quebecData) {
+            const request = await fetch('./quebec_districts.geojson');
+            this.state.quebecData = await request.json();
+        }
+
+        if(!this.state.newfoundlandData) {
+            const request = await fetch('./newfoundland_districts.geojson');
+            this.state.newfoundlandData = await request.json();
+        }
+
+        if(!this.state.newbrunswickData) {
+            const request = await fetch('./newbrunswick_districts.geojson');
+            this.state.newbrunswickData = await request.json();
+        }
+
+        if(!this.state.novascotiaData) {
+            const request = await fetch('./novascotia_districts.geojson');
+            this.state.novascotiaData = await request.json();
+        }
     }
 
     componentWillUnmount() {
@@ -47,14 +95,32 @@ export class Map extends Component{
         }
     }
 
-    swapMapLayer(layerLevel) {
+    removeLayers() {
         let map = this.state.map
         map.eachLayer(function(layer) {
             if( layer instanceof L.GeoJSON )
                map.removeLayer(layer);
         });
         this.setState({map: map});
-        L.geoJSON(layerLevel).addTo(this.state.map);
+    }
+
+    changeToProvincialData() {
+        this.removeLayers();
+        L.geoJSON(this.state.ontarioData).addTo(this.state.map);
+        L.geoJSON(this.state.bcData).addTo(this.state.map);
+        L.geoJSON(this.state.albertaData).addTo(this.state.map);
+        L.geoJSON(this.state.manitobaData).addTo(this.state.map);
+        L.geoJSON(this.state.winnipegProvincialData).addTo(this.state.map);
+        L.geoJSON(this.state.saskatchewanData).addTo(this.state.map);
+        L.geoJSON(this.state.quebecData).addTo(this.state.map);
+        L.geoJSON(this.state.newfoundlandData).addTo(this.state.map);
+        L.geoJSON(this.state.newbrunswickData).addTo(this.state.map);
+        L.geoJSON(this.state.novascotiaData).addTo(this.state.map);
+    }
+
+    changeToFederalData() {
+        this.removeLayers();
+        L.geoJSON(this.state.federalRidingsData).addTo(this.state.map);
     }
 
     render() {
@@ -62,8 +128,8 @@ export class Map extends Component{
             <div className="map">
                 <div div id="map" style={{ height: '85%', width: '100%', position:'absolute', bottom:0, zIndex:0 }}/>
                 <div class='filter_buttons_map' style={{ position: 'absolute', bottom:10, left:10 }}>
-                    <button class='button-item-map' onClick={() => this.swapMapLayer(this.state.federalRidingsData)}>Federal</button>
-                    <button class='button-item-map' onClick={() => this.swapMapLayer(this.state.provincialData)}>Provincial</button>
+                    <button class='button-item-map' onClick={() => this.changeToFederalData()}>Federal</button>
+                    <button class='button-item-map' onClick={() => this.changeToProvincialData()}>Provincial</button>
                     <button class='button-item-map' onClick={() => console.log('Button 3 clicked')}>Municipal</button>
                 </div>
             </div>
