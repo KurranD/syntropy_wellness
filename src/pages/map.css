@@ -19,7 +19,10 @@
     left:10;
 }
 
-.button-item { 
+.button-item-map { 
+    margin-top: 5%; /* Adjust the margin as needed */
+    margin-right: 5%;
+    margin-left: 5%;
     width: 100px;
     height: 50px;
     flex-shrink: 0;
@@ -35,7 +38,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease; /* Add a smooth transition effect */
 }
 
-.button-item:hover {
+.button-item-map:hover {
     background-color: #2980b9; /* Adjust the hover background color as needed */
     transform: scale(1.01); /* Add a slight scale effect on hover */
 }
