@@ -1,8 +1,10 @@
-import './App.css';
 import { LanguageProvider } from './languages/LanguageContext';
 import { MainPage } from './pages/mainPage';
-import { Information } from './pages/information';
-import { Map } from './pages/map';
+import { About } from './pages/about';
+import { Banner } from './pages/banner';
+import { Services } from './pages/services';
+import { Media } from './pages/media';
+import { ClientSuccess } from './pages/clientSuccess';
 import NavBar from './pages/navbar';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
@@ -10,13 +12,18 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <div>
+        <div style={{backgroundColor: '#e0f7fa', minHeight: '100vh'}}>
+          <Banner />
+          <MainPage />
           <NavBar/>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/information" element={<Information />} />
-            <Route path="/map" element={<Map />} />
-          </Routes>
+          <div style={{padding: '25vh 0 0 0'}}>
+            <Routes>
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/media" element={<Media />} />
+              <Route path="/client_success" element={<ClientSuccess />} />
+            </Routes>
+          </div>
         </div>
       </Router>
     </LanguageProvider>

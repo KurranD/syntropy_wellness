@@ -2,29 +2,30 @@ import React, { Component, useState } from 'react';
 import languageParser from '../languages/LanguageParser';
 import { LanguageContext } from '../languages/LanguageContext';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const DropDownContainer = styled("div")``;
-const DropDownHeader = styled("div")``;
-const DropDownListContainer = styled("div")``;
-const DropDownList = styled("ul")`
-  padding:0;
-  margin:0;
-`;
-const ListItem = styled("li")``;
+import './navbar.css';
 
 class NavBar extends Component {
   state = {
     loading: true,
-    languageMenuOpen: false
+    languageMenuOpen: false,
+    navBarVisible: true,
+    prevScrollPosition: window.pageYOffset
   };
 
   toggle = (value) => {
     this.setState({languageMenuOpen: value})
   }
 
+  handleScroll = () => {
+    const currentScrollPos = window.pageYOffset;
+    const isScrollingDown = this.state.prevScrollPosition < currentScrollPos;
+
+    this.setState({navBarVisible: !isScrollingDown});
+  };
+
   componentDidMount = async () => {
     await languageParser.fetchTranslations();
+    window.addEventListener('scroll', this.handleScroll);
     this.setState({ loading: false });
   };
 
@@ -36,21 +37,12 @@ class NavBar extends Component {
             {this.state.loading === true ? (
               <p>...</p>
             ) : (
-            <nav className="navbar">
+            <nav className={`navbar ${this.state.navBarVisible ? 'visible' : 'hidden'}`}>
                 <ul className="nav-list">
-                    <Link className="nav-item" to="/">{languageParser.getTranslationByKey('home_tab', language)}</Link>
-                    <Link className="nav-item" to="/information">{languageParser.getTranslationByKey('information_tab', language)}</Link>
-                    <Link className="nav-item" to="/map">{languageParser.getTranslationByKey('map_tab', language)}</Link>
-                    <DropDownContainer onMouseEnter={() => this.toggle(true)} onMouseLeave={() => this.toggle(false)}>
-                      <DropDownHeader className='nav-item'>{languageParser.getTranslationByKey('language_selection', language)}</DropDownHeader>
-                      {this.state.languageMenuOpen && 
-                      <DropDownListContainer>
-                        <DropDownList>
-                          <ListItem className='nav-item' onClick={() => changeLanguage('en')}>English</ListItem>
-                          <ListItem className='nav-item' onClick={() => changeLanguage('fr')}>Français</ListItem>
-                        </DropDownList>
-                      </DropDownListContainer>}
-                    </DropDownContainer>
+                    <Link className="nav-item" to="/about">{languageParser.getTranslationByKey('about', language)}</Link>
+                    <Link className="nav-item" to="/services">{languageParser.getTranslationByKey('services', language)}</Link>
+                    <Link className="nav-item" to="/media">{languageParser.getTranslationByKey('media', language)}</Link>
+                    <Link className="nav-item" to="/client_success">{languageParser.getTranslationByKey('client_success', language)}</Link>
                 </ul>
             </nav>
             )}

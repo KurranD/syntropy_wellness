@@ -1,4 +1,4 @@
-import './App.css';
+import './mainPage.css';
 import languageParser from '../languages/LanguageParser';
 import { LanguageContext } from '../languages/LanguageContext';
 import { Component } from 'react';
@@ -17,12 +17,10 @@ export class MainPage extends Component{
         return (
             <LanguageContext.Consumer>
                 {({ language, changeLanguage }) => (
-                    <div className="App">
+                    <div className="header">
                         {this.state.loading === true ? <p>...</p> :
                         <div>
-                            <div>
-                                <h2>{languageParser.getTranslationByKey('canadian_politics_demystified', language)}</h2>
-                            </div>
+                            <h2>{languageParser.getTranslationByKey('syntropy_wellness', language)}</h2>
                         </div>
                         }
                     </div>
