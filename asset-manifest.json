@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/syntropy_wellness/static/css/main.87cefde8.css",
-    "main.js": "/syntropy_wellness/static/js/main.646d910d.js",
+    "main.css": "/syntropy_wellness/static/css/main.59282e52.css",
+    "main.js": "/syntropy_wellness/static/js/main.8c453235.js",
     "static/js/787.e7037eab.chunk.js": "/syntropy_wellness/static/js/787.e7037eab.chunk.js",
     "index.html": "/syntropy_wellness/index.html",
-    "main.87cefde8.css.map": "/syntropy_wellness/static/css/main.87cefde8.css.map",
-    "main.646d910d.js.map": "/syntropy_wellness/static/js/main.646d910d.js.map",
+    "main.59282e52.css.map": "/syntropy_wellness/static/css/main.59282e52.css.map",
+    "main.8c453235.js.map": "/syntropy_wellness/static/js/main.8c453235.js.map",
     "787.e7037eab.chunk.js.map": "/syntropy_wellness/static/js/787.e7037eab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.87cefde8.css",
-    "static/js/main.646d910d.js"
+    "static/css/main.59282e52.css",
+    "static/js/main.8c453235.js"
   ]
 }
