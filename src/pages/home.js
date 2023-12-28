@@ -1,9 +1,9 @@
-import './clientSuccess.css';
+import './home.css';
 import languageParser from '../languages/LanguageParser';
 import { LanguageContext } from '../languages/LanguageContext';
 import { Component } from 'react';
 
-export class ClientSuccess extends Component{
+export class Home extends Component{
     state = {
         loading: true,
         currentTab: 'generalInfo'
@@ -21,10 +21,12 @@ export class ClientSuccess extends Component{
                     <div>
                         {this.state.loading === true ? <p>...</p> :
                         <div>
-                            {languageParser.getTranslationByKey('dummy_text_one', language)}
-                            {languageParser.getTranslationByKey('dummy_text_two', language)}
-                            {languageParser.getTranslationByKey('dummy_text_three', language)}
-                            {languageParser.getTranslationByKey('dummy_text_four', language)}
+                            <h1 className='testimonial_header'>
+                                {languageParser.getTranslationByKey('testimonials_title', language)}
+                            </h1>
+                            <div className='testimonial_text'>
+                                {languageParser.getTranslationByKey('testimonials_text', language)}
+                            </div>
                         </div>
                         }
                     </div>

@@ -21,10 +21,24 @@ export class Services extends Component{
                     <div className='text_display'>
                         {this.state.loading === true ? <p>...</p> :
                         <div>
-                            {languageParser.getTranslationByKey('dummy_text_one', language)}
-                            {languageParser.getTranslationByKey('dummy_text_two', language)}
-                            {languageParser.getTranslationByKey('dummy_text_three', language)}
-                            {languageParser.getTranslationByKey('dummy_text_four', language)}
+                            <h3>{languageParser.getTranslationByKey('services', language)}</h3>
+                            <table className='table'>
+                                <tbody>
+                                    <tr>
+                                        <td className='td'>{languageParser.getTranslationByKey('massage', language)}</td>
+                                        <td className='td'>{languageParser.getTranslationByKey('food_sensitivy', language)}</td>
+                                        <td className='td'>{languageParser.getTranslationByKey('personal_training', language)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='td'>{languageParser.getTranslationByKey('music', language)}</td>
+                                        <td className='td'>{languageParser.getTranslationByKey('health_coaching', language)}</td>
+                                        <td className='td'>{languageParser.getTranslationByKey('group_events', language)}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>{languageParser.getTranslationByKey('packages', language)}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         }
                     </div>

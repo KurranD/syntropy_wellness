@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-const csvFilePath = './languageLookup.csv'
+const csvFilePath = process.env.PUBLIC_URL + '/languageLookup.csv'
 
 class LanguageParser {
     #translations = []

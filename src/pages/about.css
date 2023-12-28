@@ -1,0 +1,31 @@
+.text_display {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(4px + 2vmin);
+}
+
+.single-item-row td {
+    padding-left: 50%;
+    width: 100%;
+}
+
+.two-items-row td {
+    width: 50%;
+}
+
+.single-item-row td, .two-items-row td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Optional: Add some spacing between two items in a row */
+  .two-items-row td:first-child {
+    padding-right: 5px; /* Adjust spacing as needed */
+  }
+  
+  .two-items-row td:last-child {
+    padding-left: 5px; /* Adjust spacing as needed */
+  }

@@ -39,10 +39,9 @@ class NavBar extends Component {
             ) : (
             <nav className={`navbar ${this.state.navBarVisible ? 'visible' : 'hidden'}`}>
                 <ul className="nav-list">
-                    <Link className="nav-item" to="/about">{languageParser.getTranslationByKey('about', language)}</Link>
                     <Link className="nav-item" to="/services">{languageParser.getTranslationByKey('services', language)}</Link>
-                    <Link className="nav-item" to="/media">{languageParser.getTranslationByKey('media', language)}</Link>
-                    <Link className="nav-item" to="/client_success">{languageParser.getTranslationByKey('client_success', language)}</Link>
+                    <Link className="nav-item" to="/events">{languageParser.getTranslationByKey('events', language)}</Link>
+                    <Link className="nav-item" to="/about">{languageParser.getTranslationByKey('about', language)}</Link>
                 </ul>
             </nav>
             )}

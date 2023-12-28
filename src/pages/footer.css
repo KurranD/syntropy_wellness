@@ -1,0 +1,22 @@
+/* Footer.css */
+.footer {
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Style the table to remove borders and spacing */
+  table {
+    margin: 0 auto; /* Center the table horizontally */
+    border-collapse: collapse;
+    width: 90%; /* Set your desired width */
+  }
+  
+  td {
+    padding: 10px;
+    text-align: center;
+    width: 33.33%;
+  }

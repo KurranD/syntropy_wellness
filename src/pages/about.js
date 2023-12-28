@@ -20,11 +20,22 @@ export class About extends Component{
                 {({ language }) => (
                     <div>
                         {this.state.loading === true ? <p>...</p> :
-                        <div>
-                            {languageParser.getTranslationByKey('dummy_text_one', language)}
-                            {languageParser.getTranslationByKey('dummy_text_two', language)}
-                            {languageParser.getTranslationByKey('dummy_text_three', language)}
-                            {languageParser.getTranslationByKey('dummy_text_four', language)}
+                        <div className='text_display'>
+                            <h3>{languageParser.getTranslationByKey('about_us', language)}</h3>
+                            <table>
+                                <tbody>
+                                    <tr className='single-item-row'>
+                                        <td>{languageParser.getTranslationByKey('mission_statement', language)}</td>
+                                    </tr>
+                                    <tr className='single-item-row'>
+                                        <td>{languageParser.getTranslationByKey('vision_statement', language)}</td>
+                                    </tr>
+                                    <tr className='two-item-row'>
+                                        <td>{languageParser.getTranslationByKey('about_spencer', language)}</td>
+                                        <td>{languageParser.getTranslationByKey('about_elizabeth', language)}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         }
                     </div>
