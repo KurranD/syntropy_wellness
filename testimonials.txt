@@ -7,3 +7,6 @@
 <br/>
 <br/>
 <p>We can enter testimonials and blog posts via a text file with markup and this should allow it to be dynamic and easily enterable.
+<br/>
+<br/>
+<p>And new test.
