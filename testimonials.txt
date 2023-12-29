@@ -1,0 +1,9 @@
+<b>Test Title</b>
+<p>Great service provided, example testimonial for the sake of testing everything out, <b>Super!</b>
+<br/>
+<br/>
+<b>Second Entry</b>
+<p>This is a second entry for testimonials.
+<br/>
+<br/>
+<p>We can enter testimonials and blog posts via a text file with markup and this should allow it to be dynamic and easily enterable.
